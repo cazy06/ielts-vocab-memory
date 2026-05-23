@@ -3349,6 +3349,7 @@ function Flash({words,progress,setProgress,marked,setMarked}){
   const cur=pool[idx%Math.max(pool.length,1)];
   const isKnown=cur?!!progress[cur.id]:false;
   const isMarked=cur?!!marked[cur.id]:false;
+  const cardHeight=flipped?390:210;
   function toggleMark(){if(!cur)return;const m={...marked,[cur.id]:!marked[cur.id]};setMarked(m);}
 
   function clearAuto(){
@@ -3446,7 +3447,7 @@ function Flash({words,progress,setProgress,marked,setMarked}){
       {/* カード */}
       <div className="card-scene" key={key} style={{marginBottom:16}}>
         <div className={`card-body slide-up${flipped?' flipped':''}`}
-          onClick={()=>setFlipped(f=>!f)} style={{minHeight:210}}>
+          onClick={()=>setFlipped(f=>!f)} style={{minHeight:cardHeight,height:cardHeight}}>
           {/* 表 */}
           <div className="card-face" style={{
             position:flipped?'absolute':'relative',width:'100%',minHeight:210,
@@ -3478,10 +3479,10 @@ function Flash({words,progress,setProgress,marked,setMarked}){
           </div>
           {/* 裏 */}
           <div className="card-face card-back" style={{
-            position:'absolute',top:0,width:'100%',minHeight:240,
+            position:'absolute',top:0,width:'100%',minHeight:cardHeight,height:cardHeight,overflowY:'auto',WebkitOverflowScrolling:'touch',
             background:'linear-gradient(145deg,#1a0a2e,#0f0a1e)',
             borderRadius:20,border:'1px solid #e91e8c44',
-            display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'18px 22px',textAlign:'center'}}>
+            display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',padding:'18px 22px',textAlign:'center'}}>
             {dir==='en'?(
               <>
                 <div style={{fontSize:21,fontWeight:700,color:'#f1f5f9',marginBottom:4,lineHeight:1.4}}>{cur.m||<span style={{color:'#475569'}}>意味未登録</span>}</div>
