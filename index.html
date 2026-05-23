@@ -3127,6 +3127,60 @@ const MEMORY_MAP={
   complex:{pos:'形容詞',parts:['com-','plex'],core:'一緒に編み込まれた',note:'plex は「編む」。多くの要素が絡んでいるので複雑。',family:'complexity'},
   prevent:{pos:'動詞',parts:['pre-','vent'],core:'前に来て止める',note:'pre- は「前もって」、vent は「来る」。先回りして防ぐ。',family:'prevention, preventive'}
 };
+Object.assign(MEMORY_MAP,{
+  being:{pos:'名詞',parts:['be','-ing'],core:'存在しているもの',note:'be は「存在する」。-ing で「存在していること・存在しているもの」になり、人間や生き物を指します。',family:'be, human being'},
+  found:{pos:'動詞',parts:['fund/found'],core:'土台を置いて始める',note:'found は「基礎を置く」感覚から、組織や学校を設立する意味になります。foundation と同じ発想です。',family:'foundation, founder'},
+  given:{pos:'前置詞・分詞',parts:['give','-en'],core:'与えられた条件として',note:'give の過去分詞から「与えられた」。文頭では「その条件が与えられているなら」という意味で使います。',family:'give, given that'},
+  state:{pos:'名詞・動詞',parts:['stat'],core:'立っている状態',note:'stat は「立つ」。そこから「立っているあり方」が状態、社会が立つまとまりが国家、言葉で立てるのが述べる。',family:'status, statement, statistics'},
+  council:{pos:'名詞',parts:['con-','cil/call'],core:'呼び集められた話し合いの場',note:'人が一緒に呼び集められて相談する場、というイメージから評議会・議会になります。',family:'councillor'},
+  means:{pos:'名詞',parts:['mean','-s'],core:'目的へ向かうための中間手段',note:'mean は「意味する」だけでなく、目的と結果をつなぐものという感覚があります。そこから「手段」。',family:'by means of'},
+  likely:{pos:'形容詞・副詞',parts:['like','-ly'],core:'その形に近いので起こりそう',note:'like は「似ている」。ある状況に似た流れなので「起こりそうだ」と覚えると自然です。',family:'unlikely, likelihood'},
+  therefore:{pos:'副詞',parts:['there','fore'],core:'その理由のために',note:'there は「そこで」、fore は古くは「前・理由に向かって」。前に述べた理由を受けて「従って」。',family:'thereby, furthermore'},
+  range:{pos:'名詞・動詞',parts:['rank/range'],core:'一列に並んだ広がり',note:'ものが横に並ぶイメージから、端から端までの幅・範囲を表します。',family:'arrange, ranking'},
+  thus:{pos:'副詞',parts:['thus'],core:'このようにして',note:'前の内容を指して「このやり方で・この結果として」とまとめる語です。論理の矢印として覚えます。',family:'therefore, hence'},
+  committee:{pos:'名詞',parts:['com-','mit','-tee'],core:'一緒に任せられた人たち',note:'mit は「送る・任せる」。何かを一緒に任された人たちなので委員会。',family:'commit, commitment'},
+  indeed:{pos:'副詞',parts:['in','deed'],core:'実際の行いの中で',note:'deed は「行い・事実」。言葉だけでなく実際にそうだ、という強調で「確かに」。',family:'deed'},
+  union:{pos:'名詞',parts:['uni','-on'],core:'一つになること',note:'uni は「一つ」。複数の人や組織が一つになるので組合・連合。',family:'unite, unity'},
+  figure:{pos:'名詞・動詞',parts:['fig'],core:'形として表れたもの',note:'fig は「形」。形にしたものが図や数字、目に見える人物像になり、頭の中で形にするので「考える」。',family:'figurative, configure'},
+  practice:{pos:'名詞・動詞',parts:['pract'],core:'実際にやって身につけること',note:'practice は理論ではなく実行の側。繰り返し実行するので練習、社会で行われる形なので慣行。',family:'practical, practitioner'},
+  former:{pos:'形容詞',parts:['form','-er'],core:'前に形作られていた',note:'form は「形」。以前の形・前の立場を指すので former は「前の」。',family:'formerly'},
+  issue:{pos:'名詞・動詞',parts:['ex/iss','ue'],core:'外へ出てきた問題',note:'issue はもともと「出る」。外に出てきて扱うべきものが問題、外へ出すものが発行物。',family:'issue a report'},
+  stage:{pos:'名詞',parts:['stage'],core:'物事が進む一段',note:'舞台の上で場面が進むように、物事の進行中の一段階を stage と考えると覚えやすいです。',family:'staged, backstage'},
+  basis:{pos:'名詞',parts:['base','-is'],core:'下で支える土台',note:'base は「土台」。議論・制度・判断を下から支えるものが basis です。',family:'base, basic'},
+  despite:{pos:'前置詞',parts:['de-','spite'],core:'妨げる気持ちがあっても',note:'spite は「悪意・反抗」。反対要素があるのに結果が成立するので「にもかかわらず」。',family:'in spite of'},
+  structure:{pos:'名詞',parts:['struct','-ure'],core:'組み立てられたもの',note:'struct は「建てる・組み立てる」。部品の組み上がり方なので構造。',family:'construct, infrastructure'},
+  capital:{pos:'名詞・形容詞',parts:['capit/cap'],core:'頭になるもの',note:'capit は「頭」。国の頭が首都、事業の頭金が資本、文の頭に立つ字が大文字。',family:'capitalism, captain'},
+  agreement:{pos:'名詞',parts:['a-/ad-','gree','-ment'],core:'互いに心地よく合うこと',note:'agree は「同意する」。考えが合った結果が agreement です。',family:'agree, agreeable'},
+  population:{pos:'名詞',parts:['popul','-ation'],core:'人々の集まり',note:'popul は「人々」。ある地域にいる人々全体なので人口。',family:'popular, populate'},
+  legal:{pos:'形容詞',parts:['leg','-al'],core:'法律に関係する',note:'leg は law と関係する「法」。-al で形容詞になり、法律上の・合法の。',family:'illegal, legislation'},
+  theory:{pos:'名詞',parts:['theor'],core:'見て考えた説明',note:'theory は「見る・考察する」感覚から、現象を説明する見方・理論になります。',family:'theoretical'},
+  growth:{pos:'名詞',parts:['grow','-th'],core:'育って大きくなること',note:'grow は「育つ」。-th で状態・結果になり、成長や増加を表します。',family:'grow, grown'},
+  relationship:{pos:'名詞',parts:['relate','-ion','-ship'],core:'互いに関係づけられた状態',note:'relate は「関係づける」。-ship は状態や立場を作るので、関係性になります。',family:'relate, relation'},
+  property:{pos:'名詞',parts:['proper','-ty'],core:'その人に固有のもの',note:'proper は「その人・ものに属する」。所有物なら財産、ものに属する性質なら特性。',family:'proper, properties'},
+  previous:{pos:'形容詞',parts:['pre-','via','-ous'],core:'道の前にある',note:'pre- は「前」、via は「道」。今来た道の前にあるものなので以前の。',family:'previously'},
+  income:{pos:'名詞',parts:['in','come'],core:'入ってくるお金',note:'文字通り「中に来るもの」。家計や会社に入ってくるお金なので収入。',family:'incoming'},
+  contract:{pos:'名詞・動詞',parts:['con-','tract'],core:'互いに引き寄せて縛る',note:'tract は「引く」。条件を引き合わせて結ぶと契約、物理的に引き縮めると縮小する。',family:'contractor, contraction'},
+  consider:{pos:'動詞',parts:['con-','sider'],core:'星を一緒に見て考える',note:'古い語源では sider は「星」。星の位置をよく見るように、じっくり考えるイメージです。',family:'consideration'},
+  attempt:{pos:'名詞・動詞',parts:['at-/ad-','tempt'],core:'何かに向かって試す',note:'tempt は「試す・触れてみる」。目標に向かって試みるので attempt。',family:'tempt, tentative'},
+  specific:{pos:'形容詞',parts:['spec','-ific'],core:'はっきり見分けられる',note:'spec は「見る」。他と区別して見えるので特定の・具体的な。',family:'specify, species'},
+  claim:{pos:'名詞・動詞',parts:['claim'],core:'声を上げて求める',note:'claim は「叫ぶ・求める」感覚。自分の権利や考えを声に出すので主張・要求。',family:'proclaim, acclaim'},
+  potential:{pos:'名詞・形容詞',parts:['potent','-ial'],core:'内側に力を持っている',note:'potent は「力がある」。まだ表に出ていない力が potential です。',family:'potent, potency'},
+  demand:{pos:'名詞・動詞',parts:['de-','mand'],core:'強く命じて求める',note:'mand は「命じる」。必要なものを強く求めるので需要・要求。',family:'command, mandatory'},
+  access:{pos:'名詞・動詞',parts:['ac-/ad-','cess'],core:'近づいて入ること',note:'cess は「行く」。対象へ近づいて入れる状態なのでアクセス・利用権。',family:'accessible, excessive'},
+  independent:{pos:'形容詞',parts:['in-','depend','-ent'],core:'ぶら下がって頼っていない',note:'depend は「頼る・ぶら下がる」。in- が否定なので、他に頼らない独立した状態。',family:'depend, independence'},
+  effective:{pos:'形容詞',parts:['effect','-ive'],core:'結果を生み出す力がある',note:'effect は「結果・効果」。-ive で性質になり、効果を出せるという意味。',family:'effect, efficiency'},
+  region:{pos:'名詞',parts:['reg','-ion'],core:'線で支配・区分された区域',note:'reg は「支配する・まっすぐにする」。区切られた支配範囲から地域。',family:'regional, regulate'},
+  degree:{pos:'名詞',parts:['de-','grade/gress'],core:'一段ずつ下り上りする段階',note:'grade と同じく「段階」の感覚。温度・程度・学位の段階を表します。',family:'grade, gradual'},
+  election:{pos:'名詞',parts:['e-/ex-','lect','-ion'],core:'外へ選び出すこと',note:'lect は「選ぶ・集める」。候補の中から選び出すので選挙。',family:'elect, select'},
+  parliament:{pos:'名詞',parts:['parl','-ment'],core:'話し合う場',note:'parl は「話す」。国のことを話し合って決める場なので議会。',family:'parley'},
+  review:{pos:'名詞・動詞',parts:['re-','view'],core:'もう一度見る',note:'re- は「再び」、view は「見る」。再確認するので見直し・評価。',family:'preview, overview'},
+  species:{pos:'名詞',parts:['spec','-ies'],core:'見た目で区別される種類',note:'spec は「見る」。見分けられる型・種類として生物の「種」になります。',family:'specific, specimen'},
+  supply:{pos:'名詞・動詞',parts:['sup/sub-','ply'],core:'下から満たして支える',note:'ply は「満たす・折り重ねる」感覚。足りない所を満たすので供給。',family:'supplement, supplier'},
+  physical:{pos:'形容詞',parts:['phys','-ical'],core:'自然・身体として実体がある',note:'phys は「自然」。頭の中だけでなく、身体や物質として存在するものを指します。',family:'physics, physique'},
+  division:{pos:'名詞',parts:['divid','-ion'],core:'分けること',note:'divid は「分ける」。分けた結果が分割、組織の一部なら部門。',family:'divide, individual'},
+  surface:{pos:'名詞',parts:['sur-/super-','face'],core:'上にある面',note:'sur-/super- は「上」、face は「面」。一番上に見える面なので表面。',family:'surface area'},
+  equipment:{pos:'名詞',parts:['equip','-ment'],core:'目的に備えつけたもの',note:'equip は「備える」。何かをするために備えた道具一式が equipment。',family:'equip, equipped'}
+});
 const PREFIXES=[
   ['anti-','反対の'],['auto-','自分で'],['bene-','よい'],['co-/com-/con-','一緒に'],['de-','下へ・離れて'],
   ['dis-','否定・反対'],['ex-/e-','外へ'],['in-/im-/il-/ir-','中へ・否定'],['inter-','間に'],
@@ -3137,6 +3191,16 @@ const SUFFIXES=[
   ['-able/-ible','できる'],['-al','形容詞化'],['-ance/-ence','名詞化'],['-ant/-ent','人・性質'],['-ary','関係する'],
   ['-er/-or','人・もの'],['-ful','満ちた'],['-ify','〜にする'],['-ion/-tion/-sion','名詞化'],['-ive','性質がある'],
   ['-ity','状態・性質'],['-less','ない'],['-ly','副詞化'],['-ment','行為・結果'],['-ous','性質がある']
+];
+const ROOT_HINTS=[
+  ['act','動く・行う'],['aud','聞く'],['cap/capt/cept','つかむ・取る'],['ced/ceed/cess','行く・進む'],['claim/clam','叫ぶ・求める'],
+  ['cred','信じる'],['cur/curs','走る'],['dict','言う'],['duc/duct','導く'],['fac/fect/fic','作る・行う'],
+  ['fer','運ぶ'],['form','形作る'],['gen','生む'],['grad/gress','歩む・段階'],['graph','書く'],
+  ['ject','投げる'],['leg/lect','読む・選ぶ'],['log','言葉・論理'],['mit/miss','送る'],['mot/mov','動く'],
+  ['pel/puls','押す'],['pend','ぶら下がる・頼る'],['plic/ply','折る・重ねる'],['port','運ぶ・港'],['pos/pon','置く'],
+  ['press','押す'],['reg','支配する・まっすぐにする'],['sci','知る'],['scrib/script','書く'],['sect','切る'],
+  ['spec/spect','見る'],['spir','息をする'],['stat/stit','立つ'],['struct','組み立てる'],['tain/ten/tent','保つ'],
+  ['tract','引く'],['ven/vent','来る'],['vid/vis','見る'],['voc/vok','声・呼ぶ'],['volv','回る']
 ];
 function guessAffixes(word){
   const w=(word||'').toLowerCase();
@@ -3151,15 +3215,29 @@ function guessAffixes(word){
   });
   return hits.slice(0,3);
 }
+function guessRootInfo(word){
+  const w=(word||'').toLowerCase();
+  const hit=ROOT_HINTS.find(([forms])=>forms.split('/').some(f=>f&&w.includes(f)));
+  if(!hit)return null;
+  const [forms,meaning]=hit;
+  const label=forms.split('/')[0];
+  return {
+    part:`${label} = ${meaning}`,
+    note:`語根 ${label} には「${meaning}」という意味の方向があります。この中心イメージから現在の意味へ広がったと考えると、丸暗記より思い出しやすくなります。`
+  };
+}
 function memoryInfo(word){
   const key=(word?.w||'').toLowerCase();
   if(MEMORY_MAP[key])return MEMORY_MAP[key];
   const affixes=guessAffixes(key);
+  const root=guessRootInfo(key);
+  const parts=[...affixes];
+  if(root)parts.unshift(root.part);
   return {
     pos:word?.m?.includes('；')?'複数の品詞・意味あり':'確認中',
-    parts:affixes.length?affixes:[],
+    parts:parts.slice(0,4),
     core:word?.m||'',
-    note:affixes.length?'接頭辞・接尾辞から意味の方向を推測できます。詳細語源は今後追加します。':'この単語は丸暗記より、例文の場面と一緒に覚えるのが向いています。',
+    note:root?root.note:affixes.length?'接頭辞・接尾辞から意味の方向を推測できます。詳細語源は今後追加します。':'この単語は丸暗記より、例文の場面と一緒に覚えるのが向いています。',
     family:''
   };
 }
