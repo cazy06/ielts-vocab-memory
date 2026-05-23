@@ -2860,7 +2860,7 @@ const BASE_WORDS=[
   {id:3198,w:"dilapidated",m:"老朽化した；荒廃した",e:"The consequences of inadequate dilapidated are felt most severely by the most vulnerable populations.",ej:"最も脆弱な人々が最も深刻にその影響を受けている。"},
   {id:3199,w:"adjunct",m:"付属物；補助的な",e:"Investment in adjunct is widely regarded as key to achieving sustainable long-term development.",ej:"持続可能な長期的発展を達成する鍵として広く考えられている。"},
   {id:3200,w:"sag",m:"たるむ；下垂する",e:"The consequences of inadequate sag are felt most severely by the most vulnerable populations.",ej:"最も脆弱な人々が最も深刻にその影響を受けている。"},
-  {id:3201,w:"fledgling",m:"駆け出しの；巣立ち前の",e:"Researchers emphasise the growing significance of fledgling in determining long-term health outcomes.",ej:"研究者たちは長期的な健康状態を決定する上でその重要性の高まりを強調している。"},
+  {id:3201,w:"fledgling",m:"駆け出しの；巣立ち前の",e:"The fledgling company struggled at first, but it soon found a loyal customer base.",ej:"その駆け出しの会社は最初は苦戦したが、やがて熱心な顧客層を見つけた。"},
   {id:3202,w:"threefold",m:"3倍の；三重の",e:"Effective management of threefold is essential for preserving ecological and economic stability.",ej:"生態学的・経済的安定を維持するために効果的な管理が不可欠だ。"},
   {id:3203,w:"preponderance",m:"優勢；大多数",e:"The relationship between preponderance and long-term economic productivity has been extensively documented.",ej:"長期的な経済生産性との関係は幅広く記録されている。"},
   {id:3204,w:"primaeval",m:"原始的な；太古の",e:"The government's initial response was widely criticised for being insufficiently primaeval and timely.",ej:"政府の当初の対応は不十分で適時性を欠くと広く批判された。"},
@@ -3120,6 +3120,7 @@ const MEMORY_MAP={
   employment:{pos:'名詞',parts:['employ','-ment'],core:'人を使う状態',note:'employ は「雇う・使う」。-ment で状態や制度になり「雇用」。',family:'employ, employee, employer'},
   application:{pos:'名詞',parts:['ap-','plic','-ation'],core:'何かに当てて使うこと',note:'plic は「折る・重ねる」。対象に重ねて当てる感覚から申請・応用・アプリへ。',family:'apply, applicable'},
   opportunity:{pos:'名詞',parts:['op-','port','-unity'],core:'港へ向かうよい風',note:'port は「港」。もともとは港へ入る好機のイメージ。',family:'opportune'},
+  fledgling:{pos:'形容詞・名詞',parts:['fledge','-ling'],core:'羽が生えたばかりで、まだ飛び慣れていない',note:'fledge は「若鳥に飛ぶ羽が生える」、-ling は「小さいもの・若いもの」。巣立ったばかりの鳥はまだ未熟なので、人や会社にも「駆け出しの」という比喩で使います。',family:'fledge, fledged, unfledged'},
   traditional:{pos:'形容詞',parts:['tradit','-ion','-al'],core:'受け渡されてきた',note:'tradit は「引き渡す」。世代を越えて渡されたものが伝統。',family:'tradition, traditionally'},
   responsibility:{pos:'名詞',parts:['re-','spond','-ibility'],core:'応答する義務',note:'spond は「約束する・応じる」。問われた時に応じる立場が責任。',family:'respond, responsible'},
   opposition:{pos:'名詞',parts:['op-','pos','-ition'],core:'向かい側に置くこと',note:'pos は「置く」。相手の反対側に立つので反対・野党。',family:'oppose, opposite'},
@@ -3173,6 +3174,7 @@ function MemoryBox({word,compact=false}){
         {info.parts.map((p,i)=><span key={i} style={{fontSize:10,color:'#c4b5fd',background:'#312e8144',borderRadius:999,padding:'2px 7px'}}>{p}</span>)}
       </div>
       <div style={{fontSize:compact?12:13,color:'#f8fafc',fontWeight:700,lineHeight:1.45}}>{info.core}</div>
+      <div style={{fontSize:10,color:'#fbbf24',fontWeight:800,letterSpacing:.4,marginTop:6}}>WHY THIS MEANING?</div>
       <div style={{fontSize:compact?11:12,color:'#cbd5e1',lineHeight:1.55,marginTop:4}}>{info.note}</div>
       {info.family&&<div style={{fontSize:11,color:'#94a3b8',lineHeight:1.5,marginTop:4}}>関連: {info.family}</div>}
     </div>
