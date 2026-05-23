@@ -8,6 +8,8 @@ IELTS vocabulary flashcard app customized for memorization.
 - Memory hints with part of speech, word parts, core image, and related words
 - Automatic migration from the old `ielts_v2` localStorage data when published on the same `cazy06.github.io` origin
 - JSON export/import for moving learning progress between devices
+- Google Sheets status CSV export
+- Published vocabulary CSV at `data/ielts_vocab_words.csv`
 
 ## Data Migration
 
