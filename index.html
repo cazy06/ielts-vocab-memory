@@ -3735,9 +3735,60 @@ function Quiz({words,progress,setProgress}){
 }
 
 // ===== LIST =====
+function buildLearningStateRows(words,progress,marked){
+  const source='IELTS VOCAB MEMORY '+new Date().toLocaleString('ja-JP');
+  return [
+    ['ID','単語 Word','習得チェック','マーク','更新元'],
+    ...words.map(w=>[
+      w.id,
+      w.w,
+      progress[w.id]?'✓ 習得済':'学習中',
+      marked[w.id]?'✓':'',
+      source
+    ])
+  ];
+}
+function tsvCell(v){return String(v??'').replace(/\t/g,' ').replace(/\r?\n/g,' ')}
+function learningCsvCell(v){
+  const s=String(v??'');
+  return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;
+}
+function downloadTextFile(filename,text,type){
+  const blob=new Blob([text],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+async function copyText(text){
+  if(navigator.clipboard&&window.isSecureContext){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){}
+  }
+  const ta=document.createElement('textarea');
+  ta.value=text;
+  ta.setAttribute('readonly','');
+  ta.style.position='fixed';
+  ta.style.left='-9999px';
+  ta.style.top='0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  let ok=false;
+  try{ok=document.execCommand('copy')}catch(e){ok=false}
+  ta.remove();
+  return ok;
+}
 function List({words,progress,setProgress,marked,setMarked}){
   const[search,setSearch]=useState('');
   const[filter,setFilter]=useState('all');
+  const[exportStatus,setExportStatus]=useState('');
   const filtered=words.filter(w=>{
     const s=search.toLowerCase();
     const match=w.w.toLowerCase().includes(s)||w.m.includes(s);
@@ -3746,6 +3797,24 @@ function List({words,progress,setProgress,marked,setMarked}){
   });
   function toggle(id){const p={...progress,[id]:!progress[id]};setProgress(p)}
   function toggleMark(id){const m={...marked,[id]:!marked[id]};setMarked(m)}
+  async function copyLearningState(){
+    const rows=buildLearningStateRows(words,progress,marked);
+    const text=rows.map(r=>r.map(tsvCell).join('\t')).join('\n');
+    if(await copyText(text)){
+      setExportStatus('コピーしました。シート「アプリ学習状態」のA1から貼り付けできます。');
+    }else{
+      downloadTextFile('ielts_vocab_learning_state.tsv','\ufeff'+text,'text/tab-separated-values;charset=utf-8');
+      setExportStatus('コピー権限が使えないため、TSVを保存しました。シート「アプリ学習状態」に取り込めます。');
+    }
+    setTimeout(()=>setExportStatus(''),5000);
+  }
+  function downloadLearningState(){
+    const rows=buildLearningStateRows(words,progress,marked);
+    const text='\ufeff'+rows.map(r=>r.map(learningCsvCell).join(',')).join('\n');
+    downloadTextFile('ielts_vocab_learning_state.csv',text,'text/csv;charset=utf-8');
+    setExportStatus('CSVを保存しました。シート「アプリ学習状態」に取り込めます。');
+    setTimeout(()=>setExportStatus(''),5000);
+  }
   const counts={known:words.filter(w=>progress[w.id]).length,unknown:words.filter(w=>!progress[w.id]).length,marked:words.filter(w=>marked[w.id]).length};
   return(
     <div>
@@ -3764,6 +3833,34 @@ function List({words,progress,setProgress,marked,setMarked}){
             {l}
           </button>
         ))}
+      </div>
+      <div style={{padding:'0 16px 10px'}}>
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
+          <button onClick={copyLearningState} className="btn"
+            style={{padding:'10px 8px',fontSize:12,fontWeight:800,
+              background:'#0f766e',color:'#ecfeff',border:'1px solid #14b8a655',
+              borderRadius:10,cursor:'pointer'}}>
+            Sheets用コピー
+          </button>
+          <button onClick={downloadLearningState} className="btn"
+            style={{padding:'10px 8px',fontSize:12,fontWeight:800,
+              background:'#1e293b',color:'#cbd5e1',border:'1px solid #334155',
+              borderRadius:10,cursor:'pointer'}}>
+            CSV保存
+          </button>
+        </div>
+        <a href="https://docs.google.com/spreadsheets/d/1rD8yNFe8uvejOSAH9Cqy6yvo1Mg18IWLMUpDF36M1gI/edit?gid=1800001002#gid=1800001002"
+          target="_blank" rel="noopener noreferrer"
+          style={{display:'block',marginTop:8,fontSize:11,color:'#38bdf8',textDecoration:'none'}}>
+          スプレッドシートを開く
+        </a>
+        {exportStatus&&(
+          <div style={{marginTop:8,padding:'9px 10px',background:'#042f2e',
+            border:'1px solid #0f766e',borderRadius:8,color:'#99f6e4',
+            fontSize:11,lineHeight:1.5}}>
+            {exportStatus}
+          </div>
+        )}
       </div>
       <div style={{paddingBottom:80}}>
         {filtered.map(w=>{
