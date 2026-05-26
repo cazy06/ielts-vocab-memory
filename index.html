@@ -3088,9 +3088,17 @@ const BASE_WORDS=[
 // ===== ストレージ =====
 const SK='ielts_memory_v1';
 const OLD_SK='ielts_v2';
+const CLOUDFLARE_VOCAB_URL='https://ielts-cbt-simulator-private.pages.dev/vocab/';
 function todayStr(){return new Date().toLocaleDateString('ja-JP');}
 function emptyStore(){return{progress:{},custom:[],dailyDate:'',dailyCount:0,marked:{},migratedFromOld:false}}
 function normalizeStore(p){return{...emptyStore(),...(p||{}),progress:(p&&p.progress)||{},custom:(p&&p.custom)||[],marked:(p&&p.marked)||{}}}
+function hasLearningData(s){
+  const n=normalizeStore(s);
+  return Object.keys(n.progress).length>0||Object.keys(n.marked).length>0||n.custom.length>0;
+}
+function encodeStoreForCloud(state){
+  return btoa(unescape(encodeURIComponent(JSON.stringify(normalizeStore(state)))));
+}
 function load(){
   try{
     const d=localStorage.getItem(SK);
@@ -3322,9 +3330,24 @@ function App(){
   const replaceStore=useCallback(next=>{const ns=normalizeStore(next);setStore(ns);save(ns)},[]);
   const knownCount=Object.values(store.progress||{}).filter(Boolean).length;
   const dailyCount=store.dailyDate===todayStr()?(store.dailyCount||0):0;
+  function migrateToCloud(){
+    const url=CLOUDFLARE_VOCAB_URL+'?import='+encodeURIComponent(encodeStoreForCloud(store));
+    location.href=url;
+  }
   return(
     <div style={{maxWidth:480,margin:'0 auto',minHeight:'100vh',display:'flex',flexDirection:'column'}}>
       <Nav tab={tab} setTab={setTab} known={knownCount} total={words.length} dailyCount={dailyCount} scrolled={scrolled}/>
+      {hasLearningData(store)&&(
+        <div style={{margin:'10px 16px 0',padding:12,background:'#082f49',border:'1px solid #0ea5e9',borderRadius:12,color:'#e0f2fe'}}>
+          <div style={{fontSize:12,fontWeight:800,marginBottom:6}}>Cloudflare同期へ移行できます</div>
+          <div style={{fontSize:11,lineHeight:1.5,color:'#bae6fd',marginBottom:9}}>この端末の習得済み・マーク状態をCloudflare版へ引き継ぎます。</div>
+          <button onClick={migrateToCloud} className="btn"
+            style={{width:'100%',padding:'10px 12px',fontSize:12,fontWeight:800,
+              background:'#0284c7',color:'#fff',border:'none',borderRadius:10,cursor:'pointer'}}>
+            Cloudflare版へ移行
+          </button>
+        </div>
+      )}
       <div style={{flex:1,paddingBottom:'env(safe-area-inset-bottom,16px)'}}>
         {tab==='flash'&&<Flash words={words} progress={store.progress} setProgress={setProgress} marked={store.marked||{}} setMarked={setMarked}/>}
         {tab==='quiz'&&<Quiz words={words} progress={store.progress} setProgress={setProgress}/>}
