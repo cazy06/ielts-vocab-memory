@@ -3097,7 +3097,16 @@ function hasLearningData(s){
   return Object.keys(n.progress).length>0||Object.keys(n.marked).length>0||n.custom.length>0;
 }
 function encodeStoreForCloud(state){
-  return btoa(unescape(encodeURIComponent(JSON.stringify(normalizeStore(state)))));
+  const s=normalizeStore(state);
+  const compact={
+    v:2,
+    p:Object.keys(s.progress||{}).filter(id=>!!s.progress[id]),
+    m:Object.keys(s.marked||{}).filter(id=>!!s.marked[id]),
+    c:s.custom||[],
+    d:s.dailyDate||'',
+    n:Number(s.dailyCount)||0
+  };
+  return btoa(unescape(encodeURIComponent(JSON.stringify(compact))));
 }
 function load(){
   try{
